@@ -17,7 +17,6 @@
 </head>
 <body>
     <style>
-
 #logo {
             margin-top: 5px;
             margin-left:0px;
@@ -187,6 +186,7 @@ Custom nvbar color
             </div>
         </div>
     </div>
+    <div id="test"></div>
 
     <div class="navbar navbar-inverse navbar-fixed-bottom" style="background:#5b8930;border-style:none">
         <div class="container">
@@ -200,13 +200,7 @@ Custom nvbar color
     <script src="js/libs/prettify.js"></script>
     <script src="js/libs/bootstrap-wysiwyg.min.js"></script>
     <script type="text/javascript" src="js/text_editor.js"></script>
-    <script type="text/javascript">
-    function postText(){
-        $.post( "/analize", $("#editor" ).text())
-          .done(function( data ) {
-            $("#editor" ).html(data);
-        });
-    }
-    </script>
+    <script type="text/javascript" src="js/output.js"></script>
+
 </body>
 </html>
