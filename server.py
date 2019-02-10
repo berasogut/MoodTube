@@ -10,8 +10,11 @@ from models.suggestion import suggestion
 from logging.handlers import RotatingFileHandler
 
 from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__, static_url_path='')
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Response bots.
 emotion_bot = emotion.emotion()
@@ -41,5 +44,5 @@ if __name__ == '__main__':
 	handler = RotatingFileHandler('server.log', maxBytes=10000, backupCount=1)
 	handler.setLevel(logging.INFO)
 	app.logger.addHandler(handler)
-	app.run(host="127.0.0.1",port=5000)
+	app.run(host="localhost",port=5000)
 

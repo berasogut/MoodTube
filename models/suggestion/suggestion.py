@@ -31,8 +31,8 @@ class suggestion:
 			if vidId:
 				if randint(0, 3) == 1:
 					break
-				if emotion_params['emotion'] == "sad" and randint(0, 1) == 1:
-					vidId="sFukyIIM1XI"
+				if randint(0, 1) == 1:
+					return ""
 					break
 			else:
 				break
