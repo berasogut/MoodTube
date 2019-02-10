@@ -26,7 +26,13 @@ def analize():
 
 	emotion = emotion_bot.predict(text_to_analyze)
 
-	return emotion
+	response = {
+		"response"   : "response",
+		"emotion"    : emotion,
+		"url" : "https://www.youtube.com/watch?v=hY7m5jjJ9mM"
+	}
+
+	return jsonify(response)
 
 if __name__ == '__main__':
 	handler = RotatingFileHandler('server.log', maxBytes=10000, backupCount=1)
