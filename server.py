@@ -5,6 +5,7 @@ import json
 import requests
 import logging
 from models.emotion import emotion
+from models.suggestion import suggestion
 
 from logging.handlers import RotatingFileHandler
 
@@ -14,6 +15,7 @@ app = Flask(__name__, static_url_path='')
 
 # Response bots.
 emotion_bot = emotion.emotion()
+suggestion_bot = suggestion.suggestion()
 
 @app.route("/", methods=['GET', 'POST'])
 def root(): 
@@ -24,12 +26,13 @@ def analize():
 
 	text_to_analyze = request.get_data()
 
-	emotion = emotion_bot.predict(text_to_analyze)
+	emotion_params = emotion_bot.predict(text_to_analyze)
+	url = suggestion_bot.suggest(emotion_params);
 
 	response = {
-		"response"   : "response",
-		"emotion"    : emotion,
-		"url" : "https://www.youtube.com/watch?v=hY7m5jjJ9mM"
+		"response"   : "You are probably feeling " + emotion_params['emotion'] +".<br/>We suggest you to watch this video. :)",
+		"emotion"    : emotion_params['emotion'],
+		"url" : url
 	}
 
 	return jsonify(response)
