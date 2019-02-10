@@ -27,13 +27,13 @@ def root():
 @app.route('/analize', methods=['POST'])
 def analize():
 
-	text_to_analyze = request.get_data()
+	text_to_analyze = request.get_data().replace('We suggest you to watch this video.', '')
 
 	emotion_params = emotion_bot.predict(text_to_analyze)
 	url = suggestion_bot.suggest(emotion_params);
 
 	response = {
-		"response"   : "You are probably feeling " + emotion_params['emotion'] +".<br/>We suggest you to watch this video. :)",
+		"response"   : "<div style='text-align: center;'>You are probably feeling " + emotion_params['emotion'] +".</div><div style='text-align: center;'>We suggest you to watch this video. :)</div>",
 		"emotion"    : emotion_params['emotion'],
 		"url" : url
 	}

@@ -19,8 +19,10 @@ class suggestion:
 	def suggest(self,emotion_params):
 		if emotion_params['emotion'] in ["sad", "angry", "excited","fearful"]:
 			url = 'https://www.youtube.com/results?search_query=%22be+'+emotion_params['antonym']+'%22';
+			print(url)
 		else:
 			url = 'https://www.youtube.com/results?search_query=%22I+am+'+emotion_params['emotion']+'%22';
+			print(url)
 		response = requests.get(url)
 		# parse html
 		page = str(BeautifulSoup(response.content.decode('utf-8','ignore')))
@@ -44,7 +46,7 @@ class suggestion:
 		#if page.find('div class="ytp-error') or resp.status_code == 404:
 		#	return ""
 
-		return self.full_embed_url + vidId
+		return self.full_embed_url + vidId + "?autoplay=1"
 
 	def getVideoID(self,page):
 		start_link = page.find('href="'+self.watch_url)

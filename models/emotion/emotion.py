@@ -11,8 +11,8 @@ import json
 import requests
 import string
 
-WATSON_API_KEY = "Your API Key"
-WATSON_URL = "Your API Key"
+WATSON_API_KEY = "Put yours here."
+WATSON_URL = "Put yours here."
 
 class emotion:
 	def __init__(self):
@@ -68,8 +68,8 @@ class emotion:
 				cur_emotion = res_emotion
 			if cur_emotion == 'joy':
 				cur_emotion += "ful"
-			if cur_emotion == 'unsettled':
-				cur_emotion = "sad"	
+			#if cur_emotion == 'unsettled':
+			#	cur_emotion = "sad"	
 
 		cur_antonym = self.match_antonym(cur_emotion)
 
